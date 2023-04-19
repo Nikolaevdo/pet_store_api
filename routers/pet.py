@@ -9,16 +9,8 @@ app = FastAPI()
 router = APIRouter()
 
 
-@app.post("/pets/", response_model=PetOut)
-async def create_pet(pet: Pet, ):
-    pet_out = conn.create_pet(pet)
-    return pet_out
-
-
 @router.get("/pets/", response_model=List[PetOut])
-async def read_pets():
+async def read_pets(limit=20):
     conn = Connection(DB_FILE)
-    pets = conn.get_pets()
+    pets = conn.get_pets(limit)
     return pets
-
-
