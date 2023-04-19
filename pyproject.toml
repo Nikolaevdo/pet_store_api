@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "pet-store-api"
+version = "0.1.0"
+description = ""
+authors = ["nikolaev <r.ferius@gmail.com>"]
+readme = "README.md"
+packages = [{include = "pet_store_api"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.95.1"
+fastapi-cli = "^0.0.1"
+uvicorn = "^0.21.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

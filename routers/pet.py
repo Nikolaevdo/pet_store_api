@@ -1,0 +1,24 @@
+from typing import List
+
+from fastapi import FastAPI, APIRouter
+from database.connection import Connection
+from models.pet import Pet, PetOut
+from database.initialize import DB_FILE
+
+app = FastAPI()
+router = APIRouter()
+
+
+@app.post("/pets/", response_model=PetOut)
+async def create_pet(pet: Pet, ):
+    pet_out = conn.create_pet(pet)
+    return pet_out
+
+
+@router.get("/pets/", response_model=List[PetOut])
+async def read_pets():
+    conn = Connection(DB_FILE)
+    pets = conn.get_pets()
+    return pets
+
+
