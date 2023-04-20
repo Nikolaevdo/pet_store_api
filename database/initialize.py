@@ -5,15 +5,15 @@ from pathlib import Path
 
 BD_NAME = "pets.db"
 DIR = Path(__file__).parent.absolute()
-DB_FILE = os.path.join(DIR, BD_NAME)
+DB_FILE = DIR.joinpath(BD_NAME)
 
 
 def initialize_database():
     try:
         with sqlite3.connect(DB_FILE) as conn:
             cursor = conn.cursor()
-            cursor.execute("""
-             CREATE TABLE pets (
+            cursor.execute(""" 
+              IF NOT EXISTS CREATE TABLE pets (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name TEXT NOT NULL,
                 age INTEGER NOT NULL,
