@@ -23,7 +23,7 @@ class Connection:
         cursor.execute("INSERT INTO pets (name, age, type, created_at) VALUES (?, ?, ?, ?)",
                        (pet.name, pet.age, pet.pet_type, created_at))
         self.conn.commit()
-        cursor.execute(f"SELECT * FROM pets WHERE id = {cursor.lastrowid}")
+        cursor.execute(f"SELECT * FROM pets WHERE id ={cursor.lastrowid}")
         result = cursor.fetchone()
         last_record_dict = {
             "id": result[0],
@@ -33,3 +33,17 @@ class Connection:
             "created_at": result[4]
         }
         return last_record_dict
+
+    def delete_pets(self, ids):
+        deleted_ids = []
+        errors = []
+        cursor = self.conn.cursor()
+        for id in ids:
+            result = cursor.execute("SELECT id FROM pets WHERE id=?", (id,))
+            if result.fetchone() is None:
+                errors.append(f"Pet with id {id} not found")
+            else:
+                cursor.execute("DELETE FROM pets WHERE id=?", (id,))
+                deleted_ids.append(id)
+
+        return {"result": "success", "deleted_ids": deleted_ids, "errors": errors}
