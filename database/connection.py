@@ -13,14 +13,16 @@ class Connection:
         rows = cursor.fetchall()
         pets = []
         for row in rows:
-            pet_dict = dict(zip(('id', 'name', 'age', 'pet_type', 'created_at'), row))
+            pet_dict = dict(zip(('id', 'name', 'age', 'pet_type',
+                                 'created_at'), row))
             pets.append(PetOut(**pet_dict))
         return pets
 
     def add_pet(self, pet: Pet):
         cursor = self.conn.cursor()
         created_at = datetime.now().isoformat()
-        cursor.execute("INSERT INTO pets (name, age, type, created_at) VALUES (?, ?, ?, ?)",
+        cursor.execute("INSERT INTO pets (name, age, type, "
+                       "created_at) VALUES (?, ?, ?, ?)",
                        (pet.name, pet.age, pet.pet_type, created_at))
         self.conn.commit()
         cursor.execute(f"SELECT * FROM pets WHERE id ={cursor.lastrowid}")
@@ -46,4 +48,5 @@ class Connection:
                 cursor.execute("DELETE FROM pets WHERE id=?", (id,))
                 deleted_ids.append(id)
 
-        return {"result": "success", "deleted_ids": deleted_ids, "errors": errors}
+        return {"result": "success", "deleted_ids":
+                deleted_ids, "errors": errors}

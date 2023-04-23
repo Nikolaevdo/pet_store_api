@@ -1,4 +1,3 @@
-import os
 import sqlite3
 from datetime import datetime
 from pathlib import Path
@@ -12,7 +11,7 @@ def initialize_database():
     try:
         with sqlite3.connect(DB_FILE) as conn:
             cursor = conn.cursor()
-            cursor.execute(""" 
+            cursor.execute("""
               IF NOT EXISTS CREATE TABLE pets (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name TEXT NOT NULL,
@@ -27,8 +26,8 @@ def initialize_database():
                 ("Benson", 3, "dog", datetime.now().isoformat()),
                 ("hachiko", 1, "dog", datetime.now().isoformat())
             ]
-            cursor.executemany("INSERT INTO pets "
-                               "(name, age, type, created_at) VALUES (?, ?, ?, ?)", pets)
+            cursor.executemany("INSERT INTO pets"'(name, age, type,'
+                               'created_at) VALUES (?, ?, ?, ?)', pets)
             conn.commit()
             print("{INFO} Database initialized successfully")
 
