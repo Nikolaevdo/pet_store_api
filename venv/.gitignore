@@ -1,0 +1,23 @@
+# PyCharm files
+.idea/
+
+# Poetry files
+.pytest_cache/
+.venv/
+__pycache__/
+.poetry/
+
+# Compiled Python files
+*.pyc
+*.pyo
+*.pyd
+
+# Compiled C extensions
+*.so
+*.dylib
+*.dll
+
+# Logs
+*.log
+*.log.*
+logs/
