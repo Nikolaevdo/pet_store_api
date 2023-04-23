@@ -1,18 +1,18 @@
 Pet Store API
 
-Это RESTful API для управления животными в зоомагазине. API предоставляет CRUD (создание, чтение, обновление и удаление) операции для животных в базе данных.
+This is a RESTful API for managing animals in a pet store. The API provides CRD (Create, Read, and Delete) operations for animals on the database.
 
 
-API предоставляет следующие эндпоинты:
+The API provides the following endpoints:
 GET /pets
 
-Возвращает список всех животных в базе данных.  
+Returns a list of all animals in the database.
 
 POST /pets
 
-Создает новое животное в базе данных на основе переданных данных и возращает его текущее состояние в базе данных.
+Creates a new animal in the database based on the given data and returns its current state in the database.
 
 
 DELETE /pets
 
-Удаляет животных с заданными идентификаторами из базы данных.
+Removes animals with the given IDs from the database.
