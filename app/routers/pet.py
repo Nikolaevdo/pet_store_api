@@ -2,9 +2,9 @@ from typing import List
 
 from fastapi import FastAPI, APIRouter
 from fastapi.responses import JSONResponse
-from database.connection import Connection
-from models.pet import Pet, PetOut
-from database.initialize import DB_FILE
+from app.database.connection import Connection
+from app.models.pet import Pet, PetOut
+from app.database.initialize import DB_FILE
 
 app = FastAPI()
 router = APIRouter()

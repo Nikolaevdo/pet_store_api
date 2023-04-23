@@ -1,10 +1,12 @@
 [tool.poetry]
-name = "pet-store-api"
+name = "app"
 version = "0.1.0"
 description = ""
 authors = ["nikolaev <r.ferius@gmail.com>"]
 readme = "README.md"
-packages = [{include = "pet_store_api"}]
+packages = [
+    { include = "./app/*" }
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
