@@ -1,5 +1,5 @@
 run:
-	uvicorn app.main:app --reload
+	poetry run pet-store-api
 install_dep:
 	poetry install
 build:

@@ -5,9 +5,15 @@ import uvicorn
 
 app = FastAPI(
     title="Pet store API"
+
 )
-initialize_database()
-app.include_router(pet.router)
+
+
+def main():
+    initialize_database()
+    app.include_router(pet.router)
+    uvicorn.run(app, port=3000)
+
 
 if __name__ == "__main__":
-    uvicorn.run(app)
+    main()
